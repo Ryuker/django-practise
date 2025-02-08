@@ -130,6 +130,8 @@ pub_data = models.DateTimeField('date published')
 ``` Python 
 class Choice(models.Models):
   question = models.ForeignKey(Question, on_delete=models.CASCADE)
+  choice_text = models.CharField(max_length=200)
+  votes = models.IntegerField(default=0)
 ```
 
 
