@@ -41,6 +41,26 @@ django-admin startproject pollster
   - we're using `sqlite3` in this project, this is the default database
     - but we can change this to postgress or mysql easily
 
+## Hiding the secret key in an .env file
+[guide](https://dev.to/earthcomfy/django-how-to-keep-secrets-safe-with-python-dotenv-5811)
+- we install `dotenv` in the virtual environment
+- we add a .env file in the Django root and make sure .gitignore includes it so it's not committed
+- inside the file we add
+```
+SECRET_KEY=<the secret key>
+```
+- imports
+``` Python pollster/settings.py
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY')
+```
+
 ## urls.py:
 - allows us to specify urls for the app, like `/polls` for example
 
