@@ -62,7 +62,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 ```
 
 ## urls.py:
-- allows us to specify urls for the app, like `/polls` for example
+- allows us to specify route urls for the app, like `/polls` for example
 
 # 04. Running the server
 ```Shell
