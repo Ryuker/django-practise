@@ -94,7 +94,14 @@ python3 manage.py startapp polls
   - `tests.py`  : we're not touching this
   - `views.py`  : can render templates, we can conntect views to urls so we can render or expose over a REST api
 
-  
+# 06. Adding the Question Model
+- in `polls/models.py` we add a class `model` which extends `models/Model`
+``` Shell
+class Question(models.Model):
+  pass
+```
+
+
 
 
 
