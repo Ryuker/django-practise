@@ -65,9 +65,20 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 - allows us to specify route urls for the app, like `/polls` for example
 
 # 04. Running the server
+- by default this will run on port `8000`
 ```Shell
 python3 manage.py runserver
 ```
+- we now have a running server and are shown the default landing page.
+
+# 04. Migrations
+- we get a message when we run the server that we have unapplied migrations for the default tables.
+  - migrations are used to give instructions to Django how to setup the database tables.
+
+- to apply migrations we run
+``` Shell
+python3 manage.py migrate
+``` 
 
 
 
