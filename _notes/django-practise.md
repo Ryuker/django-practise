@@ -96,10 +96,31 @@ python3 manage.py startapp polls
 
 # 06. Adding the Question Model
 - in `polls/models.py` we add a class `model` which extends `models/Model`
-``` Shell
+``` Python
 class Question(models.Model):
   pass
 ```
+
+## Declaring a CharField
+- `CharField` is a string field for small to large sized texts 
+  - more info:[page](https://www.geeksforgeeks.org/charfield-django-models/)
+
+- we can create an instance `models.CharField` and specify a `max_length`
+``` Python
+question_text = models.CharField(max_length=200)
+```
+
+
+## Declaring a DateTimeField
+- This a field in wich we can specify a date and time 
+  - more info: [page](https://www.geeksforgeeks.org/datetimefield-django-models/)
+- 
+``` Python
+pub_data = models.DateTimeField('date published')
+```
+
+# 07. Adding the Choice class
+
 
 
 
