@@ -134,6 +134,19 @@ class Choice(models.Models):
   votes = models.IntegerField(default=0)
 ```
 
+# 08. Elegantly displaying fields in the admin area
+- we use `__str__` to return a proper text for the fields
+  - else it will display `Question Object` which looks weird
+
+- so we add this to both classes
+  - but we change `choice` to the proper word
+``` Python
+def __str__(self):
+    return self.choice_text
+```
+
+
+
 
 
 
