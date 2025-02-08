@@ -80,5 +80,21 @@ python3 manage.py runserver
 python3 manage.py migrate
 ``` 
 
+# 05. Creating a Django App
+- we have Django setup but we still need to create an app 
+``` Shell
+python3 manage.py startapp polls
+```
+- this creates a `polls` folder
+- this includes:
+  - `migrations`:
+  - `admin.py`  : for if we want to make additions to the admin area. Like  `polls/questions` for example
+  - `apps.py`   : we're not going to touch this
+  - `models.py` : we add our database models here. we'll have a question model and a choice model.
+  - `tests.py`  : we're not touching this
+  - `views.py`  : can render templates, we can conntect views to urls so we can render or expose over a REST api
+
+  
+
 
 
