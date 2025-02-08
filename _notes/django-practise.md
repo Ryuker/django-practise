@@ -145,6 +145,11 @@ def __str__(self):
     return self.choice_text
 ```
 
+# 09. Adding Data
+
+## Through the shell
+- left vid at 16:49
+
 
 
 
