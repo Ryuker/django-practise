@@ -121,6 +121,16 @@ pub_data = models.DateTimeField('date published')
 
 # 07. Adding the Choice class
 
+## question id reference
+- for this we use a `ForeignKey`
+  - we have to link to `foreign key` to a `primary key`
+- we also specify an `on_delete method`
+  - we set this to CASCADE so when we delete a question the choices will also get deleted.
+    - this way we prevent choices from lingering that have no question assiociated with them.
+``` Python 
+class Choice(models.Models):
+  question = models.ForeignKey(Question, on_delete=models.CASCADE)
+```
 
 
 
