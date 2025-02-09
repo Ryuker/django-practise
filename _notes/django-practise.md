@@ -255,7 +255,17 @@ python3 manage.py createsuperuser
 - and can then login at `siteurl/admin/` with the super user
 
 # 13. Expanding the Admin Area with Questions
-left vid at 27:37
+- we have to add these in `polls/admin.py`
+- we import the models
+``` Python
+from .models import Question, Choice
+```
+- we register the Question and Choice model
+``` Python
+admin.site.register(Question)
+admin.site.register(Choice)
+```
+- It now shows in the admin area.
 
 
 
