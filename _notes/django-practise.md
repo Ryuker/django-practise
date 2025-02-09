@@ -1,6 +1,9 @@
 # Django Practise Notes
 - [Django Crash Course](https://www.youtube.com/watch?v=e1IyzVyrLSU&t=3054s)
 
+```Shell
+python3 manage.py runserver
+```
 
 # 01. Setup
 
@@ -248,8 +251,10 @@ quit()
 ``` Shell
 python3 manage.py createsuperuser
 ```
+- we fill in user info
+- and can then login at `siteurl/admin/` with the super user
 
-
+# 13. Expanding the Admin Area with Questions
 
 
 
