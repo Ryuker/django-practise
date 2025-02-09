@@ -255,7 +255,7 @@ python3 manage.py createsuperuser
 - and can then login at `siteurl/admin/` with the super user
 
 # 13. Expanding the Admin Area with Questions
-
+left vid at 27:37
 
 
 
