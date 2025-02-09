@@ -267,6 +267,18 @@ admin.site.register(Choice)
 ```
 - It now shows in the admin area.
 
+# 14 Nesting choices under questions
+
+## Adding ChoiceInline class
+- this contains the `model` and `extra` as a field
+- it inherits from `admin.TabularInline`
+```Python
+class ChoiceInline(admin.TabularInline):
+  model = Choice
+  extra = 3
+```
+
+
 
 
 
