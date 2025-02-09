@@ -116,7 +116,7 @@ question_text = models.CharField(max_length=200)
   - more info: [page](https://www.geeksforgeeks.org/datetimefield-django-models/)
 - 
 ``` Python
-pub_data = models.DateTimeField('date published')
+pub_date = models.DateTimeField('date published')
 ```
 
 # 07. Adding the Choice class
@@ -167,10 +167,39 @@ python3 manage.py makemigrations polls
 python3 manage.py migrate
 ```
 
-# 09. Adding Data
+# 11. Adding Data
 
 ## Through the shell
-- left vid at 16:49
+- we activate the shell
+``` Shell
+python3 manage.py shell
+```
+- bring in the models
+``` Shell
+from polls.models import Question,Choice
+```
+- we can then query the tables
+  - this return an empty query set because we haven't added anything into the tables yet
+``` Shell
+Question.objects.all()
+```
+
+## Adding a question through the shell
+- we import the `timezone` package from `django.utils`
+  - this is need for the publish date
+``` Shell
+from django.utils import timezone
+```
+- adding the question to a variable 
+  - this isn't saved in the database yet
+``` Shell
+q = Question(question_text="What is your favorite framework?", pub_date=timezone.now())
+```
+- to save it we run `q.save()`
+
+- Now it's in the database.
+
+
 
 
 
