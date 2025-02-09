@@ -156,9 +156,16 @@ INSTALLED_APPS = [
 
 # 10. Creating migrations
 - we need to do this to create the model instructions for the tables
+  - this creates a file in migrations with these instructions `00001_initial.py`
 ```Shell
 python3 manage.py makemigrations polls
-````
+```
+
+## Creating the tables for the models
+- now we need to run `migrate` to create the tables
+``` Shell
+python3 manage.py migrate
+```
 
 # 09. Adding Data
 
