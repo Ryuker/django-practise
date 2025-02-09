@@ -221,6 +221,26 @@ Question.objects.filter(id=1)
 Question.objects.get(pk=1)
 ```
 
+## Getting the choices
+```Shell
+# store question into `q` object
+q = Question.objects.get(pk=1)
+# getting the choices - will return an empty queryset for now since we have no choices yet
+q.choice_set.all()
+```
+
+## Adding choices
+- we use the `.create()` method for this on the `choice_set`
+``` Shell
+q.choice_set.create(choice_text="Django", votes=0)
+q.choice_set.create(choice_text="Flask", votes=0)
+q.choice_set.create(choice_text="Web2py", votes=0)
+```
+- we now have 3 choices in the choice_set
+
+
+
+
 
 
 
