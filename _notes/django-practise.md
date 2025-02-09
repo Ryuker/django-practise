@@ -301,6 +301,8 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 ```
 
+- left vid at 32:29
+
 
 
 
