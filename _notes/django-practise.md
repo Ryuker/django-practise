@@ -278,6 +278,29 @@ class ChoiceInline(admin.TabularInline):
   extra = 3
 ```
 
+## Adding QuestionAdmin class
+- this inherits from `admin.ModelAdmin`
+- in this we set `fieldsets`
+  - this is an array with two tuples
+    - hence we need a trailing comma after the last tuple
+- we then set inlines to the ChoiceInline class inside an array
+``` Python
+class QuestionAdmin(admin.ModelAdmin):
+  fieldsets = [
+    (None, {'fields': ['question_text']}),
+    ('Date Information', {
+      'fields': ['pub_date'], 
+      'classes': ['collapse']
+    }),
+  ]
+  inlines = [ChoiceInline]
+```
+
+- We then register `Question` and `QuestionAdmin`
+``` Python
+admin.site.register(Question, QuestionAdmin)
+```
+
 
 
 
