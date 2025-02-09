@@ -128,7 +128,7 @@ pub_data = models.DateTimeField('date published')
   - we set this to CASCADE so when we delete a question the choices will also get deleted.
     - this way we prevent choices from lingering that have no question assiociated with them.
 ``` Python 
-class Choice(models.Models):
+class Choice(models.Model):
   question = models.ForeignKey(Question, on_delete=models.CASCADE)
   choice_text = models.CharField(max_length=200)
   votes = models.IntegerField(default=0)
@@ -144,6 +144,21 @@ class Choice(models.Models):
 def __str__(self):
     return self.choice_text
 ```
+
+# 09. Adding polls app to settings
+- in `pollster/settings.py` we add 
+``` Python
+INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
+    # other apps
+]
+```
+
+# 10. Creating migrations
+- we need to do this to create the model instructions for the tables
+```Shell
+python3 manage.py makemigrations polls
+````
 
 # 09. Adding Data
 
