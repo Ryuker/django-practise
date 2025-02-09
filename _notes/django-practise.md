@@ -195,9 +195,33 @@ from django.utils import timezone
 ``` Shell
 q = Question(question_text="What is your favorite framework?", pub_date=timezone.now())
 ```
-- to save it we run `q.save()`
+- to save it we run 
+```Shell
+q.save()
+```
 
 - Now it's in the database.
+
+- We can get access fields on it using `.`
+``` Shell
+# example
+q.question_text
+```
+
+## Filtering
+- filter by ID
+  - return an array
+``` Shell
+Question.objects.filter(id=1)
+```
+
+- filter by primary key
+  - gives us a single entry
+``` Shell
+Question.objects.get(pk=1)
+```
+
+
 
 
 
