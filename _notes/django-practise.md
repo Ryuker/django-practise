@@ -243,6 +243,12 @@ q.choice_set.create(choice_text="Web2py", votes=0)
 quit()
 ```
 
+# 12. Setting up admin user
+- we need this to be able to login to our admin area
+``` Shell
+python3 manage.py createsuperuser
+```
+
 
 
 
