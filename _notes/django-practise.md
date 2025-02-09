@@ -238,6 +238,13 @@ q.choice_set.create(choice_text="Web2py", votes=0)
 ```
 - we now have 3 choices in the choice_set
 
+## Quitting the Python shell
+```Shell 
+quit()
+```
+
+
+
 
 
 
