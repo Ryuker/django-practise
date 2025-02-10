@@ -366,6 +366,43 @@ urlpatterns = [
 'DIRS': [os.path.join(BASE_DIR, 'templates')],
 ```
 
+# 17. Creating a base.html file for other templates to extend
+- this way we don't need to repeat our basic header code
+- we create `templates/base.html`
+
+## Django Syntax
+- using `{% //code goes here %} we can access Django properties in html
+
+## Blocks
+- we have to open and end blocks using 
+  `{% block %} {% endblock %}`
+  - we can name blocks
+  - we name them so we can specify what goes in them in templates that extend this template
+
+```HTML templates/base.html
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <title>Pollster {% block title %} {% endblock %}</title>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 m-auto">
+        {% block content %} {% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+
 
 
 
