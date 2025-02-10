@@ -475,7 +475,7 @@ def detail(request, question_id):
     question = Question.objects.get(pk=question_id)
   except Question.DoesNotExist:
       raise 404("Question does not exist")
-  return render(request, 'polls/results.html', { 'question': question})
+  return render(request, 'polls/detail.html', { 'question': question})
 ```
 
 ## Adding a route for question detail
@@ -498,7 +498,47 @@ def results(request, question_id):
 path('<int:question_id>/results/', views.results, name='results')
 ```
 
-# 22. 
+# 22. Details template
+- we just create `detail.html` and `results.html` in the `templates/polls` folder
+- we extend base.html in both templates
+
+## detail.html
+- `csrf` if to cross site protect form input, provided by Django
+- `forloop.counter` is another Django feature, it will be what ever the counter in the for loop currently is
+
+``` HTML templates/polls/detail.html
+{% extends 'base.html' %}
+
+{% block content %}
+  <a class="btn btn-secondary btn-sm mb-3" href="{% url 'polls:index' %}">
+    Back To polls
+  </a>
+  <h1 class="text-center mb-3">{{ question.question_text }}</h1>
+
+  {% if error_message %}
+    <p class="alert alert-danger">
+      <strong>{{ error_message }}</strong>
+    </p>
+  {% endif %}
+
+  <form action="{% url 'polls:vote' 'question.id' %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set_all %}
+      <div class="form-check">
+        <input 
+          type="radio"
+          name="choice"
+          class="form-check-input"
+          id="choice{{ forloop.counter }}"
+          value="{{ choice.id }}"
+        >
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text}}</label>
+      </div>
+    {% endfor %}
+    <input type="submit" value="Vote" class="btn btn-success btn-lg btn-block mt-4" />
+  </form>
+{% endblock %}
+```
 
 
 
