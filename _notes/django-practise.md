@@ -311,6 +311,50 @@ admin.site.site_title = "Pollster Admin Area"
 admin.site.index_title = "Welcome to the Pollster admin area"
 ```
 
+# 15. Frontend
+``` Python polls/views.py
+from .models import Question, Choice
+
+# Get questions and display them
+def index(request):
+  return render(request, 'polls/index.html')
+```
+- the above won't do anything yet because we don't have `index.html` yet and we haven't created the url route
+
+## Adding URL route
+- we create `polls/urls.py`
+- we use the `.` symbol to import all views from all
+- we specify an `app_name`
+- we specify `urlpatterns` with an array
+  - in this array we specify a path
+    - we use `''` for the first parameter so the url remains `/polls`
+    - we pass in the `index` method we created in the views file
+    - we set name to `index`
+
+``` Python polls/urls.py
+from django.urls import path
+
+from . import views
+
+app_name = 'polls'
+urlpatterns = [
+  path('', views.index, name='index')
+]
+``` 
+
+## Importing the URL into Django's urls
+- we import the url in `pollster/urls.py`
+``` Python pollster/urls.py
+from django.urls import include, path
+```
+- we add the path
+``` Python 
+urlpatterns = [
+    path('polls/', include('polls.urls')),
+    path('admin/', admin.site.urls),
+]
+```
+
 
 
 
