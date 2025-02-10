@@ -12,9 +12,9 @@
     </p>
   {% endif %}
 
-  <form action="{% url 'polls:vote' 'question.id' %}" method="post">
+  <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
-    {% for choice in question.choice_set_all %}
+    {% for choice in question.choice_set.all %}
       <div class="form-check">
         <input 
           type="radio"
@@ -23,11 +23,10 @@
           id="choice{{ forloop.counter }}"
           value="{{ choice.id }}"
         >
-        <label for="choice{{ forloop.counter }}"></label>
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text}}</label>
       </div>
     {% endfor %}
     <input type="submit" value="Vote" class="btn btn-success btn-lg btn-block mt-4" />
   </form>
-
 
 {% endblock %}

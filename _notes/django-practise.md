@@ -521,9 +521,9 @@ path('<int:question_id>/results/', views.results, name='results')
     </p>
   {% endif %}
 
-  <form action="{% url 'polls:vote' 'question.id' %}" method="post">
+  <form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
-    {% for choice in question.choice_set_all %}
+    {% for choice in question.choice_set.all %}
       <div class="form-check">
         <input 
           type="radio"
@@ -540,7 +540,7 @@ path('<int:question_id>/results/', views.results, name='results')
 {% endblock %}
 ```
 
-## 23. Results template
+# 23. Results template
 - we use a `pluralize` option so if we have more than 1 we use the pluralized word (vote > votes)
 - the rest is pretty easy to follow
   - we just render the choices with the votes next to them
@@ -560,9 +560,39 @@ path('<int:question_id>/results/', views.results, name='results')
     {% endfor %}
   </ul>
   <a class="btn btn-secondary" href="{% url 'polls:index' %}">Back To Polls</a>
-  <a class="btn btn-dark" href="{% url 'polls:detail' %}">Vote again?</a>
+  <a class="btn btn-dark" href="{% url 'polls:detail' question.id %}">Vote again?</a>
 {% endblock%}
 ```
+
+# 24. Adding the vote method to views
+``` Python polls/views.py
+# Vote for a question choice
+def vote(request, question_id):
+  # print(request.POST['choice'])
+  question = get_object_or_404(Question, pk=question_id)
+
+  try:
+     selected_choice = question.choice_set.get(pk=request.POST['choice'])
+  except (KeyError, Choice.DoesNotExist):
+    # Redisplay the question voting form
+    return render(request, 'polls/detail.html', {
+      'question': question,
+      'error_message': "You didn't select a choice",
+    })
+  else:
+    selected_choice.votes += 1
+    selected_choice.save()
+
+    # Always return an HttpResponseRedirect after successfully dealing with POST data. 
+    # This prevents data from being posted twice if a user hits the Back button
+    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+```
+
+## Adding vote path
+```Python polls/urls.py
+path('<int:question_id>/vote/', views.vote, name='vote')
+```
+- we should now be able to see the voting options in the frontend when we click on `vote` for a question
 
 
 
