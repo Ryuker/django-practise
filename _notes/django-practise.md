@@ -413,6 +413,21 @@ urlpatterns = [
 {% endblock %}
 ```
 
+# 19. Listing the Questions inside the views file
+- inside `polls/views.py` 
+- we modify the index method with a latest_question_list variable
+  - we use `order_by()` to order the questions by date.
+
+- it's conventional to use `context` for the variable name when we pass the data to the render method
+  - we pass this as a dictionary.
+
+``` Python polls/views.py
+def index(request):
+  latest_question_list = Question.objects.order_by('-pub-date')[:5]
+  context = {'latest_question_list': latest_question_list}
+  return render(request, 'polls/index.html', context)
+```
+
 
 
 
