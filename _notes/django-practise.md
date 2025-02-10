@@ -485,6 +485,21 @@ def detail(request, question_id):
 path('<int:question_id>', views.detail, name='detail')
 ```
 
+# 21. Adding the results method and url
+- we repeat the process for the results method and then create a url for it
+```Python polls/views.py
+# Get question and display results
+def results(request, question_id):
+   question = get_object_or_404(Question, pk=question_id)
+   return render(request, 'polls/results.html', {'question': question})
+```
+- added the path
+``` Python poll/urls.py
+path('<int:question_id>/results/', views.results, name='results')
+```
+
+# 22. 
+
 
 
 
