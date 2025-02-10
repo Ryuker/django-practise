@@ -311,7 +311,7 @@ admin.site.site_title = "Pollster Admin Area"
 admin.site.index_title = "Welcome to the Pollster admin area"
 ```
 
-# 15. Frontend
+# 15. Frontend polls URL
 ``` Python polls/views.py
 from .models import Question, Choice
 
@@ -354,6 +354,20 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 ```
+
+# 16. Adding a Template for the polls index
+- to keep things organized we add `templates/polls/index.html` in the pollster root folder
+- we then just add some basic html
+
+## Pointing Django to the right templates folder
+- in `pollster/settings.py` we need to specify which directory to use for the templates
+- to do this we edit `DIRS` inside the `TEMPLATES` array
+``` Python pollster/settings.py
+'DIRS': [os.path.join(BASE_DIR, 'templates')],
+```
+
+
+
 
 
 
