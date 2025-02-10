@@ -541,8 +541,7 @@ path('<int:question_id>/results/', views.results, name='results')
 ```
 
 ## 23. Results template
-- we use a `pluralize` option
-  - not sure what this does yet..
+- we use a `pluralize` option so if we have more than 1 we use the pluralized word (vote > votes)
 - the rest is pretty easy to follow
   - we just render the choices with the votes next to them
   - we render some buttons for navigation
