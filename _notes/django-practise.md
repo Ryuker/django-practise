@@ -555,7 +555,9 @@ path('<int:question_id>/results/', views.results, name='results')
     {% for choice in question_choice.set.all %}
       <li class="list-group-item">
         {{ choice.choice_text }} 
-        <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
+        <span class="badge text-bg-success float-end">
+          {{ choice.votes }} vote{{ choice.votes | pluralize }}
+        </span>
       </li>
     {% endfor %}
   </ul>
