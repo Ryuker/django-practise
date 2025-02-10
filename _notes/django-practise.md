@@ -402,6 +402,17 @@ urlpatterns = [
 </html>
 ```
 
+# 18. Extend base.html inside the index.html
+- we extend the base and then add the some content to the `content` block
+  - since we named the block in the base file we can target it.
+``` HTML
+{% extends 'base.html' %}
+
+{% block content %}
+  Polls
+{% endblock %}
+```
+
 
 
 
