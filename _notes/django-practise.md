@@ -540,6 +540,31 @@ path('<int:question_id>/results/', views.results, name='results')
 {% endblock %}
 ```
 
+## 23. Results template
+- we use a `pluralize` option
+  - not sure what this does yet..
+- the rest is pretty easy to follow
+  - we just render the choices with the votes next to them
+  - we render some buttons for navigation
+``` HTML
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="mb-5 text-center">{{ question.question_text }}</h1>
+
+  <ul class="list-group mb-5">
+    {% for choice in question_choice.set.all %}
+      <li class="list-group-item">
+        {{ choice.choice_text }} 
+        <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  <a class="btn btn-secondary" href="{% url 'polls:index' %}">Back To Polls</a>
+  <a class="btn btn-dark" href="{% url 'polls:detail' %}">Vote again?</a>
+{% endblock%}
+```
+
 
 
 
