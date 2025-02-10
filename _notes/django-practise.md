@@ -597,6 +597,7 @@ path('<int:question_id>/vote/', views.vote, name='vote')
 - we should now be able to see the voting options in the frontend when we click on `vote` for a question
 
 
+# 25. Adding and styling a landing page
 
 
 
