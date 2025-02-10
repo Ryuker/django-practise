@@ -423,9 +423,33 @@ urlpatterns = [
 
 ``` Python polls/views.py
 def index(request):
-  latest_question_list = Question.objects.order_by('-pub-date')[:5]
+  latest_question_list = Question.objects.order_by('-pub_date')[:5]
   context = {'latest_question_list': latest_question_list}
   return render(request, 'polls/index.html', context)
+```
+
+## Displaying the questions
+- we're using standar bootstrap stuff for the styling
+- we use an if to check if we have questions
+  - we render `No polls available` if we have an empty list
+  - else we iterate through a for loop and render each question
+    - we use `{{ }}` to render data
+```HTML templates/polls/index.html
+{% block content %}
+  <h1 class="text-center mb-3">Poll Questions</h1>
+  {% if latest_question_list %}
+    {% for question in latest_question_list %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="lead">{{ question.question_text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No polls available</p>s
+  {% endif %}
+
+{% endblock %}
 ```
 
 
