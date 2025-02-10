@@ -461,7 +461,22 @@ def index(request):
 <a href="{% url 'polls:results' question.id %}" class="btn btn-secondary btn-sm">Results</a>
 ```
 
+## Modifying view to handle the question request
+- we use a try catch block for this
+  - the `question_id` will be accessible as a parameter on the url, hence we can pass it as primary key to the get() method
 
+  - if a question does not exist we raise a `404`
+  else we return a render call of results.html with the question in a dictionary.
+    - we still have to create this file 
+``` Python
+# Show specific question and choices
+def detail(request, question_id):
+  try:
+    question = Question.objects.get(pk=question_id)
+  except Question.DoesNotExist:
+      raise 404("Question does not exist")
+  return render(request, 'polls/results.html', { 'question': question})
+```
 
 
 

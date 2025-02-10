@@ -9,3 +9,9 @@ def index(request):
   return render(request, 'polls/index.html', context)
 
 # Show specific question and choices
+def detail(request, question_id):
+  try:
+    question = Question.objects.get(pk=question_id)
+  except Question.DoesNotExist:
+      raise 404("Question does not exist")
+  return render(request, 'polls/results.html', { 'question': question})
