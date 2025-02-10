@@ -267,7 +267,7 @@ admin.site.register(Choice)
 ```
 - It now shows in the admin area.
 
-# 14 Nesting choices under questions
+# 14. Nesting choices under questions
 
 ## Adding ChoiceInline class
 - this contains the `model` and `extra` as a field
@@ -304,8 +304,12 @@ admin.site.register(Question, QuestionAdmin)
 
 - We now see Choices as an TabularInline panel under a specific question
 
-
-
+# 15. Changing the site header and title
+``` Python poll/admin.py
+admin.site.site_header = "Pollster Admin"
+admin.site.site_title = "Pollster Admin Area"
+admin.site.index_title = "Welcome to the Pollster admin area"
+```
 
 
 
