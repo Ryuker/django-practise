@@ -461,7 +461,7 @@ def index(request):
 <a href="{% url 'polls:results' question.id %}" class="btn btn-secondary btn-sm">Results</a>
 ```
 
-## Modifying view to handle the question request
+# 20. Modifying view to handle the question request
 - we use a try catch block for this
   - the `question_id` will be accessible as a parameter on the url, hence we can pass it as primary key to the get() method
 
@@ -477,6 +477,14 @@ def detail(request, question_id):
       raise 404("Question does not exist")
   return render(request, 'polls/results.html', { 'question': question})
 ```
+
+## Adding a route for question detail
+- we add this in `polls/urls.py`
+  - we use `<>` to pass in an int as the path name
+``` Python poll/urls.py
+path('<int:question_id>', views.detail, name='detail')
+```
+
 
 
 
