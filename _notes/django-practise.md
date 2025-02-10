@@ -442,6 +442,8 @@ def index(request):
       <div class="card mb-3">
         <div class="card-body">
           <p class="lead">{{ question.question_text }}</p>
+          <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary btn-sm">Vote Now</a>
+          <a href="{% url 'polls:results' question.id %}" class="btn btn-secondary btn-sm">Results</a>
         </div>
       </div>
     {% endfor %}
@@ -451,6 +453,17 @@ def index(request):
 
 {% endblock %}
 ```
+
+## Adding buttons for voting and seeing results
+- these are nested in the `card-body`
+``` HTML
+<a href="{% url 'polls:detail' question.id %}" class="btn btn-primary btn-sm">Vote Now</a>
+<a href="{% url 'polls:results' question.id %}" class="btn btn-secondary btn-sm">Results</a>
+```
+
+
+
+
 
 
 
