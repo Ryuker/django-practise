@@ -271,6 +271,7 @@ admin.site.register(Choice)
 
 ## Adding ChoiceInline class
 - this contains the `model` and `extra` as a field
+  - extra is for extra choices, it's optional to add
 - it inherits from `admin.TabularInline`
 ```Python
 class ChoiceInline(admin.TabularInline):
@@ -301,7 +302,7 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 ```
 
-- left vid at 32:29
+- We now see Choices as an TabularInline panel under a specific question
 
 
 
